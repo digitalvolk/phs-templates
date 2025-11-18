@@ -1,0 +1,92 @@
+% !TeX program = lualatex
+\documentclass{Provadis-Klausur}
+
+% Konfiguration
+\newcommand\Veranstaltung{Angewandte \LaTeX{}ologie}
+\newcommand\Studiengang{BIN}
+% Studiengruppe; sollte, falls nicht gewünscht, als Kommentar verbleiben (und daher undefiniert sein)
+%\newcommand\Studiengruppe{}
+\newcommand\Semester{WS 2025/2026}
+\newcommand\Dozent{Prof. Dr. Eric Hutter}
+\newcommand\Datum{\today}
+\newcommand\DauerMinuten{60}
+% Hilfsmittel; falls undefiniert, wird "Keine" gesetzt
+\newcommand\Hilfsmittel{Lua\LaTeX\ oder Xe\LaTeX. Im Notfall geht auch pdf\LaTeX.}
+
+\newcommand\PunkteZusatzspalten{
+	{Bonus\footnotemark}/5%,{Noch eine Spalte}/3
+}
+% kann genutzt werden, um zusätzlichen Text nach der Punkteverteilung zu setzen,
+% z.B. eine Fußnote zu einer Zusatzspalte, denn innerhalb der Zusatzspalten funktioniert \footnote aus irgendeinem Grund nicht
+\newcommand\NachPunkteverteilung{%
+	\vspace{-0.5em}% damit alles noch auf eine Seite passt...
+	\footnotetext{Durch Übungspunkte kann ein Bonus von 5 Punkten auf die Klausur erworben werden.}
+}% wird nach Punkteverteilungs-Tabelle eingefügt
+
+% Beispiel, wie auf der ersten Seite ein Wasserzeichen (z.B. "Lösung" oder "Probeklausur") eingebunden werden kann.
+% Die aktivierte loesung-Option überschreibt das hier gesetzte Wasserzeichen allerdings in jedem Fall.
+\DraftwatermarkOptions{stamp=true}
+\SetWatermarkText{\textbf{Dokumentation}}
+\SetWatermarkScale{0.66}
+
+\begin{document}
+\Aufgabe[Grundlagen]{1,2,3}
+\begin{enumerate}
+	\item Passen Sie die Konfigurations-Makros in der \texttt{.tex}-Datei an, um die Klausur auf Ihre Veranstaltung zuzuschneiden.
+	\item Leiten Sie Aufgaben mit \texttt{\textbackslash Aufgabe\{1,2,3\}} ein.
+	
+		\emph{Hinweis:} Die Semantik des \texttt{\textbackslash Aufgabe}-Befehls ist vergleichbar mit \LaTeX-Standardbefehlen wie \texttt{\textbackslash chapter}, \texttt{\textbackslash section} usw. -- diese sollten in Klausuren aber \textbf{nicht} genutzt werden.
+		\begin{enumerate}
+			\item Das verpflichtende Argument enthält die mit Komma getrennten Punktzahlen der Teilaufgaben.
+			\item Optional kann (wie in dieser Aufgabe) ein Titel der Aufgabe (hier: "`Grundlagen"') vergeben werden: \texttt{\textbackslash Aufgabe[Grundlagen]\{1,2,3\}}
+			\item Wenn nur ein einziger Eintrag vorhanden ist, wird im Aufgabenkopf keine Auflistung der Teilpunkte ausgegeben, sondern nur die Gesamtpunktzahl genannt.
+		\end{enumerate}
+	\item Punkteverteilung und Gesamtpunktzahl auf dem Deckblatt werden automatisch generiert.
+		\begin{enumerate}
+			\item Wenn sich die Anzahl der Aufgaben und/oder die Verteilung der Punkte auf die Aufgaben ändert, sind zwei bis drei \LaTeX-Durchläufe nötig, um das Deckblatt in einen konsistenten Zustand zu bringen.
+			\item Die Klasse prüft am Ende des Dokuments, ob das Deckblatt inkonsistent zu den Aufgaben ist und wirft in einem solchen Fall einen \textbf{Fehler}.
+				Das schützt effektiv vor voreilig eingereichten, fehlerhaften Klausuren.
+			\item Auch bei Änderungen der Seitenzahl werden zwei \LaTeX-Durchläufe benötigt, bis die Angaben in der Fußzeile korrekt sind.
+		\end{enumerate}
+\end{enumerate}
+
+\Aufgabe{1}
+Kompilieren Sie Ihre ganz persönliche Klausur!
+
+\emph{Hinweis:} Beachten Sie, dass für diese Aufgabe keine Teilaufgaben im Aufgabenkopf verzeichnet sind.
+Konkret wurde diese Aufgabe mit \texttt{\textbackslash Aufgabe\{1\}} eingeleitet und enthält somit nur eine einzige "`Teilaufgabe"', der Rest geschieht automatisch.
+
+Die Nummer der Aufgabe (hier: 2) muss nicht explizit angegeben werden und wird automatisch hochgezählt.
+
+\Aufgabe{1}
+Bei Bedarf können der Punkteverteilung Zusatzspalten hinzugefügt werden, beispielsweise für Bonuspunkte aus Hausübungen. Beachten Sie hierzu die Beispielimplementierung in der \texttt{.tex}-Datei.
+
+\Aufgabe{5}
+Der Vorteil von \LaTeX{} liegt ganz klar im Formelsatz:
+\begin{gather*}
+	\exp(z) := \sum_{i=0}^\infty \frac{z^k}{k!} \\
+	\exp(ix) = \cos x + i\sin x
+\end{gather*}
+Die Mathematikumgebungen sind so konfiguriert, dass ihr Design den Standardeinstellungen des Word-Formeleditors entspricht (Schriftart \emph{Cambria Math}) -- zumindest unter Lua\LaTeX\ oder Xe\LaTeX; bei Nutzung von pdf\LaTeX\ wird stattdessen \emph{Times New Roman} genutzt.
+
+\emph{Hinweis:} Bei Bedarf können zusätzlich die Pakete \texttt{amsmath}, \texttt{mathtools} etc. geladen werden.
+
+\platz{1cm}
+\begin{loesung}
+	Diese Lösung wird nur bei aktivierter \texttt{loesung}-Option angezeigt!
+\end{loesung}
+
+\Aufgabe[Lösungsdokumente]{42}
+Es werden einige Hilfsmakros angeboten, um die Klausur vorzubereiten:
+\begin{itemize}
+	\item Es kann mit der Klassenoption \texttt{loesung} kompiliert werden, um ein Lösungsdokument zu erhalten.
+		Dieses wird mit einem Wasserzeichen auf der ersten Seite entsprechend markiert.
+	\item \texttt{\textbackslash platz\{LÄNGE\}} erzeugt einen Leerraum der Größe \texttt{LÄNGE}, der allerdings \emph{nicht} in Lösungsdokumenten vorhanden ist.
+	\item Der Inhalt der \texttt{nurAufgabe}-Umgebung wird \textbf{nicht} in Lösungsdokumenten gesetzt.
+	\item Der Inhalt der \texttt{nurLoesung}-Umgebung wird \textbf{nur} in Lösungsdokumenten gesetzt.
+	\item Der Inhalt der \texttt{loesung}-Umgebung wird \textbf{nur} in Lösungsdokumenten gesetzt und durch einen Kasten mit der Überschrift "`Lösung"' hervorgehoben.
+	\item Das \texttt{ARGUMENT} des \texttt{\textbackslash loes\{ARGUMENT\}}-Befehls wird \textbf{nur} in Lösungsdokumenten gesetzt, dafür jedoch \textbf{fett}.
+\end{itemize}
+
+
+\end{document}

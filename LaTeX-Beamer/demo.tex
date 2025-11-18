@@ -1,0 +1,382 @@
+% !TeX program = lualatex
+\documentclass{provadis-beamer}
+
+\usepackage[ngerman]{babel}
+
+% Aus Faulheit ein \beamer-Makro
+\newcommand{\beamer}{\emph{\texttt{beamer}}}
+
+\date{\today}
+\title[\LaTeX-\texttt{beamer}-Vorlage im Design der Provadis Hochschule]{Inoffizielle \LaTeX-\texttt{beamer}-Vorlage\\ im Design der Provadis Hochschule}
+\author[E. Hutter]{Eric Hutter}
+
+\usepackage{tikzducks}
+
+\begin{document}
+
+	\titlepage
+	
+	\section{Einleitung}
+	
+	\begin{frame}{Einleitung}
+		Diese \emph{inoffizielle Vorlage} ermöglicht es, mithilfe von \emph{\LaTeX{}} und dem \beamer-Paket Foliensätze im Corporate Design der \emph{Provadis~Hochschule} zu erstellen.\\[\baselineskip]
+		
+		Sie entstand insbesondere aus dem Wunsch heraus, Folien für Mathematikvorlesungen zu erstellen und dabei nicht auf den Formeleditor von Microsoft~PowerPoint angewiesen zu sein, sondern vielmehr auf die hervorragende Unterstützung von \emph{\LaTeX} für mathematischen Textsatz zurückgreifen zu können.\\[\baselineskip]
+		
+		Dieser Foliensatz demonstriert das resultierende Folienlayout und dokumentiert gleichzeitig die Nutzung der Vorlage.
+	\end{frame}
+	
+	\begin{frame}[fragile=singleslide,ineedspace]{Installation und Benutzung}
+		\begin{enumerate}
+			\item Die Dateien \texttt{provadis-beamer.cls}, \texttt{beamerthemeThinkingIndustryNew.sty} und das Unterverzeichnis \texttt{Grafiken} müssen in dasselbe Verzeichnis wie die zu erstellenden Foliensätze kopiert werden.
+			\item Unter \emph{macOS} müssen zusätzlich einige Schriftarten installiert werden, wie auf der nächsten Folie beschrieben.
+			\item Nun können Foliensätze wie folgt als \emph{\LaTeX}-Dokumente angelegt werden:
+				{\color{text2}\footnotesize\begin{verbatim}
+\documentclass{provadis-beamer}
+\usepackage[ngerman]{babel}
+\date{\today}% Datum ggf. anpassen
+\title[Kurztitel für Fußzeile]{Langtitel für Titelfolie}
+\author[Kurzname für Fußzeile]{Name für Titelfolie}
+\begin{document}
+    \titlepage% erzeugt die Titelseite
+
+    \begin{frame}{Folientitel}
+        Meine erste Folie mit \emph{\LaTeX} und \emph{\texttt{beamer}}!
+    \end{frame}
+\end{document}
+\end{verbatim}}
+			\item Im Anschluss kann der Foliensatz mit \emph{Lua\LaTeX} kompiliert werden. \emph{pdf\LaTeX} wird \alert{nicht} unterstützt!
+		\end{enumerate}
+		 
+	\end{frame}
+
+	\begin{frame}{Schriftarten}
+		Es werden dieselben Schriftarten wie in der PowerPoint-Vorlage verwendet:
+		\begin{enumerate}
+			\item \emph{Arial} als Standardschriftart,
+			\item \textrm{\emph{Cambria} als Schriftart mit Serifen via \emph{\texttt{\textbackslash{}textrm\{Text\}}},}
+			\item \texttt{\emph{Consolas} als dicktengleiche Schriftart via \emph{\textbackslash{}texttt\{Text\}}, z.B. für Codebeispiele.}
+		\end{enumerate}
+		\vspace{\baselineskip}
+		\alert{Achtung:} Unter \emph{macOS} müssen hierzu zunächst die besagten Schriftarten \emph{systemweit} installiert werden:
+		\begin{enumerate}
+			\item \texttt{arial.ttf}, \texttt{arialbd.ttf}, \texttt{arialbi.ttf}, \texttt{ariali.ttf},
+			\item \texttt{Cambria.ttc}, \texttt{Cambriab.ttf}, \texttt{Cambriai.ttf}, \texttt{Cambriaz.ttf},
+			\item \texttt{Consola.ttf}, \texttt{Consolab.ttf}, \texttt{Consolai.ttf}, \texttt{Consolaz.ttf}.
+		\end{enumerate}
+		Diese befinden sich im Verzeichnis
+		\texttt{/Applications/Microsoft~PowerPoint.app/Contents/Resources/DFonts}.\\[\baselineskip]
+		
+		\alert{Für die Installation und Nutzung der Schriftarten ist eine gültige Lizenz von Microsoft~PowerPoint erforderlich.}
+	\end{frame}
+	
+	\begin{frame}{Listenumgebungen}
+		Es werden die Standard-Listenumgebungen \emph{\texttt{itemize}} sowie \emph{\texttt{enumerate}} unterstützt und analog zur PowerPoint-Vorlage formatiert:
+		\begin{itemize}
+			\item Erste \texttt{itemize}-Ebene
+			\begin{itemize}
+				\item Zweite \texttt{itemize}-Ebene
+				\begin{itemize}
+					\item Dritte \texttt{itemize}-Ebene
+				\end{itemize}
+			\end{itemize}
+		\end{itemize}
+		
+		\begin{enumerate}
+			\item Erste \texttt{enumerate}-Ebene
+			\begin{enumerate}
+				\item Zweite \texttt{enumerate}-Ebene
+				\begin{enumerate}
+					\item Dritte \texttt{enumerate}-Ebene
+				\end{enumerate}
+			\end{enumerate}
+		\end{enumerate}
+		
+		Im Gegensatz zur PowerPoint-Vorlage werden jedoch nur \emph{drei} Ebenen unterstützt.
+		Diese Limitierung wurde von \beamer\ geerbt.
+		
+		Auch sind die Zeilenabstände innerhalb der zweiten bzw.\ dritten Ebene geringer als in der PowerPoint-Vorlage, da diese in \emph{\LaTeX} von der Schriftgröße abhängig sind.
+	\end{frame}
+	
+	\begin{frame}{Texthervorhebung}
+		Zur Hervorhebung von Textpassagen stehen drei Makros bereit:
+		\begin{enumerate}
+			\item \emph{\texttt{\textbackslash{}emph\{Text\}}} setzt \emph{Text} in \textbf{fett}.
+				\begin{itemize}
+					\item Das ist unabhängig von der Textfarbe: \emph{Text}.
+				\end{itemize}
+			\item \alert{\texttt{\textbackslash{}alert\{Text\}}} setzt \alert{Text} in \textcolor{dunkelrot}{Dunkelrot} und \textbf{fett}.
+				\begin{itemize}
+					\item Diese Hervorhebung hat \alert{keine} direkte Entsprechung in der PowerPoint-Vorlage.
+					\item Auch statmmt die Farbe \textcolor{dunkelrot}{Dunkelrot} \emph{nicht} aus dem Corporate Design der Provadis~Hochschule!
+				\end{itemize}
+			\item \emph{\texttt{\textbackslash{}structure\{Text\}}} setzt \structure{Text} in \textcolor{text1}{Dunkelblau} und \textbf{fett}.
+				\begin{itemize}
+					\item Die Textfarbe wird \structure{immer} auf \textcolor{text1}{Dunkelblau} gesetzt: \structure{Text}.
+					\item Diese Hervorhebung ist vor allem für \structure{Strukturelemente} der Präsentation gedacht, z.B. für \structure{(Unter-)Überschriften}.
+				\end{itemize}
+		\end{enumerate}
+	\end{frame}
+	
+	\begin{frame}{Mathematik}
+		Einer der Hauptgründe für ein \beamer-Template:
+		Die herausragende Unterstützung von \emph{\LaTeX} für den Satz mathematischer Formeln!
+		
+		Als Schriftart kommt \emph{\textrm{Cambria Math}} zum Einsatz.\newline
+		Es wird somit dieselbe OpenType-Mathematikschriftart wie in der PowerPoint-Vorlage genutzt!
+		
+		Zur Demonstration ein paar bekannte Formeln, die hier von der \emph{\texttt{align*}}-Umgebung gesetzt werden, wie sie von \emph{\texttt{amsmath}} bereitgestellt wird:
+		\begin{align*}
+			\sum_{i=1}^n &= \frac{n^2+n}{2} \\
+			f_n &= \frac1{\sqrt 5} \left( \left(\frac{1+\sqrt 5}2\right)^n - \left(\frac{1-\sqrt 5}2\right)^n \right) \\
+			e^{i\pi} &= -1
+		\end{align*}
+	\end{frame}
+	
+	\begin{frame}{Farben}
+		Die folgenden Farben entstammen dem Farbschema der PowerPoint-Vorlage:
+		
+		\centering
+		\begin{tikzpicture}[xscale=1.2,yscale=0.525]
+			\tikzset{
+				description/.style={
+					font=\footnotesize
+				},
+				modifier/.style={
+					font=\footnotesize\ttfamily,
+					text=text2,
+					execute at begin node=\dots
+				},
+				name/.style={
+					font=\footnotesize\ttfamily,
+					text=text2
+				},
+				colorname/.style={
+					font=\tiny\ttfamily,
+					text=white,
+					execute at end node=\strut
+				}
+			}
+			\foreach \variant/\vdesc [count=\y from 0] in {
+				{}/{Standard},
+				h80/{heller 80\%},
+				h60/{heller 60\%},
+				h40/{heller 40\%},
+				d25/{dunkler 25\%},
+				d50/{dunkler 50\%}
+			} {
+				\node[anchor=east,description] at (0.5,-\y) {\vdesc};
+				\ifx\variant\empty\else
+				\node[anchor=west,modifier] at (10.5,-\y){\variant};
+				\fi
+			}
+			
+			\foreach \basecolor/\desc [count=\x] in {
+				background1/{Weiß, Hintergrund 1},
+				text1/{Dunkelblau, Text 1},
+				background2/{Grün, Hintergrund 2},
+				text2/{Schwarz, Text 2},
+				accent1/{Dunkelblau, Akzent 1},
+				accent2/{Orange, Akzent 2},
+				accent3/{Blaugrün, Akzent 3},
+				accent4/{Türkis, Akzent 4},
+				accent5/{Hellblau, Akzent 5},
+				accent6/{Rosa, Akzent 6}
+			} {
+				\node[rotate=40,anchor=west,description] at ([yshift=0.5em]\x,0.5) {\desc};
+				
+				\foreach \variant [count=\y from 0] in {
+					{},
+					h80,
+					h60,
+					h40,
+					d25,
+					d50%
+				} {
+					\edef\c{\basecolor\variant}
+					\fill[fill=\c] (\x-0.5,-\y-0.5) rectangle +(1,1) node[midway,colorname] {\c};
+				}
+				
+				\node[name,anchor=north,yshift=-0.5em] at (\x,-5.5) {\basecolor};
+			}
+		\end{tikzpicture}
+	\end{frame}
+	
+	\begin{frame}{Zusätzliche Farben}
+		Die folgenden Standardfarben von PowerPoint sind ebenfalls verfügbar, stammen aber nicht aus dem Corporate Design der Provadis~Hochschule:
+		
+		\begin{center}
+			\begin{tikzpicture}[xscale=1.1,yscale=0.55]
+				\tikzset{
+					colorname/.style={
+						font=\footnotesize\ttfamily,
+						text=text2,
+						execute at end node=\strut
+					},
+					description/.style={
+						font=\footnotesize
+					},
+				}
+				\foreach \basecolor/\desc [count=\x] in {
+					dunkelrot/Dunkelrot,
+					rot/Rot,
+					orange/Orange,
+					gelb/Gelb,
+					hellgruen/Hellgrün,
+					gruen/Grün,
+					hellblau/Hellblau,
+					blau/Blau,
+					dunkelblau/Dunkelblau,
+					lila/Lila
+					%hlink/Link,
+					%folHlink/{Link (besucht)}%
+				} {
+					\node[rotate=40,anchor=west,description] at ([yshift=0.5em]\x,0.5) {\desc};
+					\fill[fill=\basecolor] (\x-0.5,-0.5) rectangle +(1,1);
+					\node[anchor=north,colorname,yshift=-0.5em] at (\x,-0.5) {\basecolor};
+				}
+			\end{tikzpicture}
+		\end{center}
+		
+		Alle Farben können mithilfe von \emph{\texttt{\textbackslash{}textcolor\{name\_der\_farbe\}\{Text\}}} verwendet werden,\newline
+		beispielsweise erzeugt \emph{\texttt{\textbackslash{}textcolor\{background2\}\{diesen Text\}}} \textcolor{background2}{diesen Text}.
+	\end{frame}
+	
+	\begin{frame}[nobackground]{Hintergrundbild}
+		Das Hintergrundbild kann -- wie auf dieser Folie -- ausgeschaltet werden.
+		
+		Hierzu werden zwei Methoden bereitgestellt:
+		\begin{enumerate}[a)]
+			\item Der Befehl \emph{\texttt{\textbackslash{}ProvadisDisableBackground}} deaktiviert das Hintergrundbild \emph{auf allen folgenden Folien}.
+				\begin{itemize}
+					\item Der Befehl \emph{\texttt{\textbackslash{}ProvadisEnableBackground}} aktiviert das Hintergrundbild \emph{auf allen folgenden Folien} wieder.
+				\end{itemize}
+			\item Auf \emph{einzelnen} Folien kann das Hintergrundbild mit der \texttt{frame}-Option \emph{\texttt{nobackground}} deaktiviert werden.
+				\begin{itemize}
+					\item \emph{Beispiel:} \texttt{\textbackslash{}begin\{frame\}[nobackground]\{Titel\}}
+					\item Ebenso kann das Hintergrundbild mit der \texttt{frame}-Option \emph{\texttt{background}} aktiviert werden.
+				\end{itemize}
+		\end{enumerate}
+	\end{frame}
+	
+	\begin{frame}[nosignet]{Signet}
+		Das Signet~~\includegraphics[height=1.5\baselineskip]{Grafiken/thinking_industry_new_slogan},~~das normalerweise auf jeder Folie in der unteren rechten Ecke positioniert ist, kann (temporär) abgeschaltet werden, um bei Bedarf zusätzlichen Platz auf der Folie zu gewinnen.\\[1\baselineskip]
+		
+		Dies erfolgt analog zur (temporären) Abschaltung des Hintergrundbilds:
+		\begin{enumerate}[a)]
+			\item Der Befehl \emph{\texttt{\textbackslash{}ProvadisDisableSignet}} deaktiviert das Signet \emph{auf allen folgenden Folien}.
+			\begin{itemize}
+				\item Der Befehl \emph{\texttt{\textbackslash{}ProvadisEnableSignet}} aktiviert das Signet \emph{auf allen folgenden Folien} wieder.
+			\end{itemize}
+			\item Auf \emph{einzelnen} Folien kann das Signet mit der \texttt{frame}-Option \emph{\texttt{nosignet}} deaktiviert werden.
+			\begin{itemize}
+				\item \emph{Beispiel:} \texttt{\textbackslash{}begin\{frame\}[nosignet]\{Titel\}}
+				\item Ebenso kann das Signet mit der \texttt{frame}-Option \emph{\texttt{signet}} aktiviert werden.
+			\end{itemize}
+		\end{enumerate}
+		\vspace{\baselineskip}
+		
+		Selbstverständlich kann das Deaktivieren des Signets mit der Deaktivierung des Hintergrundbilds kombiniert werden.
+		
+		\vfill
+		\alert{Mit deaktiviertem Signet reicht der Textbereich fast bis herab zur Fußzeile!}
+		\vspace{-\fill}% normalerweise setzt beamer ein \vfill ans Ende, das machen wir hier zu Demonstrationszwecken unschädlich
+	\end{frame}
+	
+	\begin{frame}[ineedspace]{Trotz Signet mehr Platz auf der Folie}
+		Alternativ kann auch nur der Textbereich der Folien vergrößert werden, obwohl das Signet eingeschaltet ist.\\[\baselineskip]
+		
+		Dies ist über die \texttt{frame}-Option \emph{\texttt{ineedspace}} möglich: \texttt{\textbackslash{}begin\{frame\}[ineedspace]\{Titel\}}.\\[\baselineskip]
+		
+		Da das keine saubere Praxis darstellt, sollte auf den Gebrauch dieser Methode nach Möglichkeit verzichtet werden, um die Folie nicht zu überladen.
+		
+		\vfill
+		\alert{Der Textbereich endet erst hier unten, obwohl das Signet aktiviert ist!}
+		\vspace{-\fill}% normalerweise setzt beamer ein \vfill ans Ende, das machen wir hier zu Demonstrationszwecken unschädlich
+	\end{frame}
+	
+	\begin{frame}[fragile=singleslide]{Titelbild anpassen}
+		Bei Bedarf kann das Bild auf der Titelfolie durch ein anderes ersetzt werden.\\[\baselineskip]
+		
+		Hierzu muss das \beamer-Template \emph{\texttt{image on title page}} umdefiniert werden,
+		beispielsweise wie folgt:
+		{\color{text2}\begin{verbatim}
+\setbeamertheme{image on title page}{%
+    \includegraphics[width=\linewidth]{image_file_name}%
+}
+		\end{verbatim}}
+		Im Anschluss kann die Titelfolie wie gewohnt über \emph{\texttt{\textbackslash{}titlepage}} erzeugt werden -- die nächste Folie zeigt ein Beispiel.\\[\baselineskip]
+		
+		\emph{Hinweis:} Es wird angenommen, dass das eingebundene Bild bei horizontaler Skalierung auf die volle Breite auch vertikal den vollen für das Titelbild vorgesehenen Platz ausfüllt.\\[\baselineskip]
+		
+		Mit \emph{\texttt{\textbackslash{}setbeamertemplate\{image on title page\}[default]}} kann wieder auf das standardmäßige Titelbild gewechselt werden.
+	\end{frame}
+	
+	\setbeamertemplate{image on title page}{%
+		\raisebox{1.5cm}{\begin{tikzpicture}[scale=1.25]
+				\duck[body=white!90!brown,bill=white!75!brown,bunny]
+		\end{tikzpicture}}
+	}
+	\titlepage
+	
+	\begin{frame}{Signet auf Titelfolie anpassen}
+		Okay, auf der vorhergehenden Folie wurde gar kein externes Bild eingebunden, sondern vielmehr mithilfe von Ti\textit{k}Z behelfsmäßig ein Schneehase im Schnee gezeichnet.\\[\baselineskip]
+		
+		Aber aufgrund des hellen Hintergrunds war das helle Signet auf der vorigen Beispiel-Titelfolie gar nicht zu erkennen.\\[\baselineskip]
+		
+		Daher kann in solchen Fällen mithilfe von \emph{\texttt{\textbackslash{}setbeamertemplate\{signet on title page\}[dark]}} auf eine dunkle Variante des Signets gewechselt werden und im Anschluss via \emph{\texttt{\textbackslash{}titlepage}} die Titelseite erzeugt werden.\\[\baselineskip]
+		
+		Analog wählt \emph{\texttt{\textbackslash{}setbeamertemplate\{signet on title page\}[light]}} das helle Signet aus.\\[\baselineskip]
+		
+		Die nächste Folie zeigt das vorhergehende Beispiel noch einmal, diesmal jedoch mit \emph{dunklem Signet}, das sieht in diesem Fall deutlich besser aus!
+	\end{frame}
+	
+	\setbeamertemplate{signet on title page}[dark]
+	\titlepage
+	
+	\begin{frame}[ineedspace]{Mehrspaltiges Layout}
+		\begin{columns}[onlytextwidth]
+			\begin{column}[T]{0.475\linewidth}
+				Mehrspaltige Layouts sind mit der \emph{\texttt{columns}}-Umgebung, wie sie von \emph{\LaTeX-\beamer} standardmäßig bereitgestellt wird, kein Problem!\\[\baselineskip]
+				
+				Für Informationen, wie dieses zweispaltige Layout realisiert wurde, sei auf den \emph{Quelltext} sowie \href{http://mirrors.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf}{die Dokumentation des \beamer-Pakets} verwiesen.
+			\end{column}
+			\begin{column}[T]{0.475\linewidth}
+				Hier könnte ein wichtiger Text stehen!
+				
+				Stattdessen überladen wir die Folie aber mit völlig unnötigem Blindtext:
+				\begin{quote}
+					\rmfamily\normalshape\raggedright
+					Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+				\end{quote}
+			\end{column}
+		\end{columns}
+	\end{frame}
+	
+	\section{Disclaimer}
+	
+	\begin{frame}{Disclaimer}
+		\begin{itemize}
+			\item \emph{Dies ist keine offizielle Vorlage!}
+			\begin{itemize}
+				\item Es wurde lediglich die (ebenfalls inoffizielle) PowerPoint-Vorlage als \beamer-Vorlage nachgebaut.
+			\end{itemize}
+			
+			\item \emph{Offene Punkte:}
+			\begin{itemize}
+				\item Einige Teile der Vorlage sind noch unvollständig. Unter anderem\dots
+				\begin{itemize}
+					\item sind \texttt{\textbackslash{}item}s einer \texttt{enumerate}-Umgebung nicht perfekt linksbündig ausgerichtet, wenn \emph{nicht} mit 1., 2., 3. etc. nummeriert wird,
+					\item könnten Links noch farbig markiert und unterstrichen werden,
+					\item könnten automatische Gliederungsfolien unterstützt werden,
+					\item sind für \beamer-Blockumgebungen keine besonderen Templates festgelegt (diese haben aber ohnehin keine Entsprechung im Corporate Design),
+					\item erzeugen Titelfolien eine \texttt{overfull-hbox}-Warnung,
+					\item ist das Signet möglicherweise noch zu weit rechts positioniert,
+					\item werden Fußnoten nicht unterstützt,
+					\item \dots
+				\end{itemize}
+				\item Über Hinweise und Verbesserungsvorschläge freut sich Eric Hutter (\href{mailto:eric.hutter@provadis-hochschule.de}{eric.hutter@provadis-hochschule.de}).
+			\end{itemize}
+		\end{itemize}
+	\end{frame}
+\end{document}

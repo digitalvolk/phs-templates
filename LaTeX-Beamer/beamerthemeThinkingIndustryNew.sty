@@ -1,0 +1,603 @@
+\mode<presentation>
+
+% Inhalt standardmäßig nicht vertikal zentrieren
+\beamer@centeredfalse
+
+% Längen bzw. Abstände festlegen.
+%
+% Das Beamer-Handbuch sagt »you should refrain from changing the “paper size."« (Abschnitt 8.3).
+% Beamer nutzt standardmäßig bei 16:9-Layout eine Frame Size von 160x90mm bei 16:9.
+% Die PowerPoint-Vorlage nutzt dagegen 33.87x19.05cm.
+% Beamer ist also um einen Faktor 0.4724 kleiner.
+% Damit müssen wir haushalten und alle Längen entsprechend skalieren.
+\newlength{\Provadis@LogoWidth}\setlength{\Provadis@LogoWidth}{2.508444cm}% 5.31cm in PowerPoint
+\newlength{\Provadis@LogoHeight}\setlength{\Provadis@LogoHeight}{0.902284cm}% 1.91cm in PowerPoint
+\newlength{\Provadis@LogoMarginTop}\setlength{\Provadis@LogoMarginTop}{0.458228cm}% 0.97cm in PowerPoint
+\newlength{\Provadis@LogoMarginRight}\setlength{\Provadis@LogoMarginRight}{0.7086cm}% 1.5cm in PowerPoint
+
+% TODOF FIXME: Signet ist etwas zu weit rechts?!
+\newlength{\Provadis@SignetWidth}\setlength{\Provadis@SignetWidth}{2.111628cm}% 4.47cm in PowerPoint
+\newlength{\Provadis@SignetMarginRight}\setlength{\Provadis@SignetMarginRight}{0.7086cm}% 1.5cm in PowerPoint
+\newlength{\Provadis@SignetMarginBottom}\setlength{\Provadis@SignetMarginBottom}{0.387368cm}% 0.82cm in PowerPoint
+
+\newlength{\Provadis@FrameTitleMarginLeft}\setlength{\Provadis@FrameTitleMarginLeft}{0.7086cm}% 1.5cm in PowerPoint
+\newlength{\Provadis@FrameTitleMarginTop}\setlength{\Provadis@FrameTitleMarginTop}{0.66136cm}% 1.4cm in PowerPoint
+\newlength{\Provadis@FrameTitleMarginBottom}\setlength{\Provadis@FrameTitleMarginBottom}{0.51964cm}% 1.1cm in PowerPoint
+\newlength{\Provadis@FrameTitleWidth}\setlength{\Provadis@FrameTitleWidth}{10.8652cm}% 23cm in PowerPoint
+\newlength{\Provadis@FrameTitleHeight}\setlength{\Provadis@FrameTitleHeight}{0.7086cm}% 1.5cm in PowerPoint
+
+\newlength{\Provadis@FootlineMarginLeftRight}\setlength{\Provadis@FootlineMarginLeftRight}{0.7086cm}% 1.5cm in PowerPoint
+\newlength{\Provadis@FootlineHeight}\setlength{\Provadis@FootlineHeight}{0.325956cm}% 0.69cm in PowerPoint
+\newlength{\Provadis@FootlinePaddingLeftRight}\setlength{\Provadis@FootlinePaddingLeftRight}{0.1181cm}% 0.25cm in PowerPoint
+
+\newlength{\Provadis@FootlineDateWidth}\setlength{\Provadis@FootlineDateWidth}{1.483336cm}% 3.14cm in PowerPoint
+\newlength{\Provadis@FootlineDateAuthorTitleSeparator}\setlength{\Provadis@FootlineDateAuthorTitleSeparator}{0.136996cm}% 0.29cm in PowerPoint
+\newlength{\Provadis@FootlineAuthorTitleWidth}\setlength{\Provadis@FootlineAuthorTitleWidth}{8.370928cm}% 17.72cm in PowerPoint
+\newlength{\Provadis@FootlineFrameNumberWidth}\setlength{\Provadis@FootlineFrameNumberWidth}{1.4172cm}% 3cm in PowerPoint
+% Abstand zwischen Oberkante Signet und Oberkante Footline
+\newlength{\Provadis@FootlineSignetReservedSpace}\setlength{\Provadis@FootlineSignetReservedSpace}{0.628292cm}% 1.33cm in PowerPoint
+
+\newlength{\Provadis@TextareaMarginLeft}\setlength{\Provadis@TextareaMarginLeft}{0.7086cm}% 1.5cm in PowerPoint
+\newlength{\Provadis@TextareaMarginRight}\setlength{\Provadis@TextareaMarginRight}{0.7086cm}% nahezu 1.5cm in PowerPoint (genauer: 1.47cm)
+\newlength{\Provadis@TextareaPaddingTop}\setlength{\Provadis@TextareaPaddingTop}{0.061412cm}% 0.13cm in PowerPoint
+\newlength{\Provadis@TextareaPaddingBottom}\setlength{\Provadis@TextareaPaddingBottom}{0.061412cm}% 0.13cm in PowerPoint
+\newlength{\Provadis@TextareaPaddingLeft}\setlength{\Provadis@TextareaPaddingLeft}{0.1181cm}% 0.25cm in PowerPoint
+\newlength{\Provadis@TextareaPaddingRight}\setlength{\Provadis@TextareaPaddingRight}{0.1181cm}% 0.25cm in PowerPoint
+
+\newlength{\Provadis@TitlePageMarginLeft}\setlength{\Provadis@TitlePageMarginLeft}{0.245648cm}% 0.52cm in PowerPoint
+\newlength{\Provadis@TitlePageMarginRight}\setlength{\Provadis@TitlePageMarginRight}{0.245648cm}% 0.52cm in PowerPoint
+\newlength{\Provadis@TitlePageMarginTop}\setlength{\Provadis@TitlePageMarginTop}{1.58254cm}% 3.35cm in PowerPoint
+\newlength{\Provadis@TitlePageMarginBottom}\setlength{\Provadis@TitlePageMarginBottom}{0.2362cm}% 0.5cm in PowerPoint
+\newlength{\Provadis@TitlePageAuthorTitleWidth}\setlength{\Provadis@TitlePageAuthorTitleWidth}{8.5032cm}% 18cm in PowerPoint
+\newlength{\Provadis@TitlePageAuthorHeight}\setlength{\Provadis@TitlePageAuthorHeight}{0.4724cm}% 1cm in PowerPoint
+\newlength{\Provadis@TitlePageTitleHeight}\setlength{\Provadis@TitlePageTitleHeight}{1.4172cm}% 3cm in PowerPoint
+\newlength{\Provadis@TitlePageTitlePaddingLeft}\setlength{\Provadis@TitlePageTitlePaddingLeft}{0.2362cm}% 0.5cm in PowerPoint
+\newlength{\Provadis@TitlePageTitlePaddingRight}\setlength{\Provadis@TitlePageTitlePaddingRight}{0.4724cm}% 0.5cm in PowerPoint
+\newlength{\Provadis@TitlePageAuthorPaddingLeft}\setlength{\Provadis@TitlePageAuthorPaddingLeft}{0.2362cm}% 0.5cm in PowerPoint
+\newlength{\Provadis@TitlePageAuthorPaddingRight}\setlength{\Provadis@TitlePageAuthorPaddingRight}{0.4724cm}% 0.5cm in PowerPoint
+
+\newlength{\Provadis@TitlePageSignetWidth}\setlength{\Provadis@TitlePageSignetWidth}{2.50372cm}% 5.3cm in PowerPoint
+\newlength{\Provadis@TitlePageSignetMarginRight@RelativeToBackgroundImage}\setlength{\Provadis@TitlePageSignetMarginRight@RelativeToBackgroundImage}{0.44878cm}% 0.95cm in PowerPoint
+\newlength{\Provadis@TitlePageSignetMarginBottom@RelativeToBackgroundImage}\setlength{\Provadis@TitlePageSignetMarginBottom@RelativeToBackgroundImage}{0.344852cm}% 0.73cm in PowerPoint
+
+
+% Schriftgrößen vorbereiten.
+% Da TeX intern in mit 72.27pt pro Zoll rechnet, aber alle anderen Programme mit 72pt, nutzen wir als Einheit bp (big point)
+
+\changefontsizes{7.5584bp}% 16pt PowerPoint
+
+% zusätzlich nutzt PowerPoint normalerweise 1.5-fachen Zeilenabstand, das basteln wir hier auch rein,
+% damit auf einen Frame ein Paragraph mit 15 Zeilen Text passt.
+\onehalfspacing
+
+% standardmäßig wird \baselineskip um den Faktor 1.2 größer als die Fontsize eingestellt, das übernehmen wir also.
+\def\Provadis@XXIIPoint{\fontsize{10.3928bp}{12.4714bp}}% 22pt
+\def\Provadis@XXPoint{\fontsize{9.4480bp}{11.3376bp}}% 20pt
+\def\Provadis@XVIIIPoint{\fontsize{8.5032bp}{10.20384bp}}% 18pt
+\let\Provadis@XVIPoint\normalsize% 16pt
+\def\Provadis@XIVPoint{\fontsize{6.6136bp}{7.9363bp}}% 14pt
+\def\Provadis@XIIPoint{\fontsize{5.6688bp}{6.8026bp}}% 12pt
+\def\Provadis@XPoint{\fontsize{4.7240bp}{5.6688bpbp}}% 10pt
+
+% so passen zwölf Zeilen auf einen Frame, exakt wie in PowerPoint.
+% Zusätzlich erlauben wir aber ein bisschen vertikalen Shrink.
+\setlength{\parskip}{\dimexpr\baselineskip/4 minus 1bp}
+
+% Abstände des Texts links/rechts setzen; linker/rechter Rand jeweils zuzüglich innerer Abstand
+\setbeamersize{
+	text margin left=\dimexpr\Provadis@TextareaMarginLeft+\Provadis@TextareaPaddingLeft,
+	text margin right=\dimexpr\Provadis@TextareaMarginRight+\Provadis@TextareaPaddingRight
+}
+
+% Die beamer-Navigationssymbole wollen wir nicht.
+\setbeamertemplate{navigation symbols}{}
+
+% das Logo.
+\newcommand{\ProvadisLogoFile}{Grafiken/provadis_hochschule_logo_text}
+% Die Anzeige des Logos kann im Benutzercode bei Bedarf mit \setbeamertemplate{logo}[off] deaktiviert werden.
+\defbeamertemplate{logo}{off}{}
+\defbeamertemplate{logo}{on}{%
+	\put(\paperwidth-\Provadis@LogoMarginRight-\Provadis@LogoWidth,-\Provadis@LogoMarginTop-\Provadis@LogoHeight){\includegraphics[width=\Provadis@LogoWidth,height=\Provadis@LogoHeight]{\ProvadisLogoFile}}%
+}
+\setbeamertemplate{logo}[on]
+
+% Das Signet auf der Titelfolie gibt es in einer hellen und einer dunklen Variante.
+% Falls ein benutzerdefiniertes Titelbild verwendet wird, muss ggf. via
+%    \usebeamertemplate{signet on title page}[dark]
+% auf die dunkle Variante gewechselt werden.
+\defbeamertemplate{signet on title page}{light}{%
+	\includegraphics[width=\linewidth] {Grafiken/thinking_industry_new_slogan_white}%
+}
+\defbeamertemplate{signet on title page}{dark}{%
+	\includegraphics[width=\linewidth] {Grafiken/thinking_industry_new_slogan}%
+}
+\setbeamertemplate{signet on title page}[light]
+
+% Das Bild auf der Titelfolie kann bei Bedarf geändert werden:
+%   \setbeamertemplate{image on title page}{\includegraphics[width=\linewidth] {ImageFile}}
+% Die Trim-Parameter im Default-Template sind nicht zwingend nötig, skalieren das Standardbild aber so,
+% dass es nahezu identisch zur PowerPoint-Vorlage angezeigt wird.
+\defbeamertemplate{image on title page}{default}{%
+	\adjincludegraphics[width=\linewidth,trim={0 {0.1531\height} 0 {0.1523\height}},clip]{Grafiken/standard_title_background}%
+}
+\setbeamertemplate{image on title page}[default]
+
+% Hintergrund und Signet sind nicht per Template realisiert, sondern über bool-Switches:
+% Diese sollen nicht vom Benutzer überschrieben werden können, sondern vielmehr über spezielle Makro
+% oder Frame-Optionen an- bzw. ausgeschaltet werden können.
+% Hierzu verfahren wir wie folgt:
+%
+% Es existiert jeweils ein \ifProvadis@{FEATURE}-Switch.
+% Immer, wenn dessen Wert vom Benutzer durch ein Makro für alle folgenden Folien umgeschaltet wird,
+% wird dieser (zuletzt vom Benutzer eingestellte) Wert ebenfalls in das Makro \Provadis@Restore{FEATURE}
+% kopiert.
+% Zu Beginn jedes Frames wird der Wert von \ifProvadis@{FEATURE} aus \Provadis@Restore{FEATURE}
+% wiederhergestellt.
+% Wenn eine neue Frame-Option ein Feature (de)aktiviert, wird nur \ifProvadis@{FEATURE} entsprechend
+% gesetzt und daher vor Beginn des nächsten Frames wieder auf den vorherigen Wert zurückgesetzt.
+%
+% Das ist eine etwas kontraintuitive Vorgehensweise, aber offenbar nötig, weil beamer-Frames
+% nicht mit etoolbox' \AfterEndEnvironment erweitert werden können, also können wir das Setzen von
+% \ifProvadis@{FEATURE} nicht per Gruppe auf einen einzigen Frame beschränken.
+%
+% Hintergrund an/aus (standardmäßig an)
+\newif\ifProvadis@Background\Provadis@Backgroundtrue
+\let\Provadis@RestoreBackground\ifProvadis@Background
+% Signet an/aus (standardmäßig an)
+\newif\ifProvadis@Signet\Provadis@Signettrue
+\let\Provadis@RestoreSignet\ifProvadis@Signet
+% Textarea durch Signet nach unten begrenzen an/aus (standardmäßig an, kann unabhängig vom Signet beeinflusst werden)
+\newif\ifProvadis@ReserveSpaceForSignet\Provadis@ReserveSpaceForSignettrue
+\let\Provadis@RestoreReserveSpaceForSignet\ifProvadis@ReserveSpaceForSignet
+% Wenn die Begrenzung der Textarea durch das Signet verändert wird, ändert sich die Höhe der Fußzeile.
+% Beamer speichert die aber zwischen, weshalb wir nach Änderung diese Höhe neu berechnen lassen müssen.
+% Damit wir das nicht bei jedem Frame machen müssen, nutzen wir dieses Flag, um zu markieren, wann
+% eine Neuberechnung nötig ist.
+\newif\ifProvadis@RecalculateHeadFootHeight\Provadis@RecalculateHeadFootHeightfalse
+
+\usebackgroundtemplate{%
+	\begin{picture}(0,0)
+		\ifProvadis@Background
+			\put(0,-\paperheight){
+				\includegraphics[width=\paperwidth]{Grafiken/background_image}
+			}
+		\fi
+		\usebeamertemplate{logo}
+		\ifProvadis@Signet
+			\put(\paperwidth-\Provadis@SignetMarginRight-\Provadis@SignetWidth,-\paperheight+\Provadis@SignetMarginBottom){
+				\includegraphics[width=\Provadis@SignetWidth]{Grafiken/thinking_industry_new_slogan}
+			}%
+		\fi
+	\end{picture}%
+}
+
+% Siehe oben: So wie beamer aufgebaut ist, funktioniert \AfterEndEnvironment nicht mit frame.
+% Deshalb stellen wir vor dem Beginn des frame die zuletzt von Benutzer für alle folgenden Frames eingestellten Werte wieder her;
+% die neuen frame-Optionen zum temporären Überschreiben haben dann einen Frame lang Präzedenz.
+\BeforeBeginEnvironment{frame}{%
+	\let\ifProvadis@Background\Provadis@RestoreBackground%
+	\let\ifProvadis@Signet\Provadis@RestoreSignet%
+	\let\ifProvadis@ReserveSpaceForSignet\Provadis@RestoreReserveSpaceForSignet%
+	\ifProvadis@RecalculateHeadFootHeight%
+		% Höhe der Fußzeile nur neu berechnen, wenn sich wirklich Änderungen ergeben haben.
+		\beamer@calculateheadfoot%
+		\Provadis@RecalculateHeadFootHeightfalse%
+	\fi%
+}
+
+% \begin{frame}[nobackground] --> diesen Frame ohne Hintergrundbild
+\define@key{beamerframe}{nobackground}[]{%
+	\Provadis@Backgroundfalse%
+}
+
+% \begin{frame}[background] --> diesen Frame mit Hintergrundbild
+\define@key{beamerframe}{background}[]{%
+	\Provadis@Backgroundtrue%
+}
+
+% \begin{frame}[nosignet] --> diesen Frame ohne Signet
+\define@key{beamerframe}{nosignet}[]{%
+	\Provadis@Signetfalse%
+	\Provadis@ReserveSpaceForSignetfalse%
+	\Provadis@RecalculateHeadFootHeighttrue% recalculate height after next reset
+	\beamer@calculateheadfoot%
+}
+
+% \begin{frame}[signet] --> diesen Frame mit Signet
+\define@key{beamerframe}{signet}[]{%
+	\Provadis@Signettrue%
+	\Provadis@ReserveSpaceForSignettrue%
+	\Provadis@RecalculateHeadFootHeighttrue% recalculate height after next reset
+	\beamer@calculateheadfoot%
+}
+
+% \begin{frame}[ineedspace] --> für diesen Frame die untere Begrenzung der textarea durch das Signet deaktivieren, wenn man mal mehr Platz benötigt
+\define@key{beamerframe}{ineedspace}[]{%
+	\Provadis@ReserveSpaceForSignetfalse%
+	\Provadis@RecalculateHeadFootHeighttrue% recalculate height after next reset
+	\beamer@calculateheadfoot%
+}
+
+% Signet für alle folgenden Frames deaktivieren
+\newcommand{\ProvadisDisableSignet}{%
+	\Provadis@Signetfalse%
+	\let\Provadis@RestoreSignet\ifProvadis@Signet%
+	\Provadis@ReserveSpaceForSignetfalse%
+	\let\Provadis@RestoreReserveSpaceForSignet\ifProvadis@ReserveSpaceForSignet%
+	\beamer@calculateheadfoot%
+}
+
+% Signet für alle folgenden Frames aktivieren
+\newcommand{\ProvadisEnableSignet}{
+	\Provadis@Signetfalse%
+	\let\Provadis@RestoreSignet\ifProvadis@Signet%
+	\Provadis@ReserveSpaceForSignettrue%
+	\let\Provadis@RestoreReserveSpaceForSignet\ifProvadis@ReserveSpaceForSignet%
+	\beamer@calculateheadtrue%
+}
+
+% Hintergrundbild für alle folgenden Frames deaktivieren
+\newcommand{\ProvadisDisableBackground}{%
+	\Provadis@Backgroundfalse%
+	\let\Provadis@RestoreBackground\ifProvadis@Background%
+}
+
+% Hintergrundbild für alle folgenden Frames aktivieren
+\newcommand{\ProvadisEnableBackground}{%
+	\Provadis@Backgroundtrue%
+	\let\Provadis@RestoreBackground\ifProvadis@Background%
+}
+
+% Patch: Wir wollen den Frametitle immer im Layout einbeziehen, auch wenn er leer ist
+% TODO: xpatchcmd?
+\patchcmd{\endbeamer@frameslide}{\ifx\beamer@frametitle\@empty}{\iffalse}{}{\PackageError{ThinkingIndustryNew}{Failed to patch beamer frame title}}
+
+\setbeamertemplate{frametitle}{%
+	\vspace{\Provadis@FrameTitleMarginTop}%
+	\nointerlineskip%
+	\begin{beamercolorbox}[ht=\Provadis@FrameTitleHeight,leftskip=\dimexpr-\Provadis@TextareaMarginLeft-\Provadis@TextareaPaddingLeft+\Provadis@FrameTitleMarginLeft]{@dummy for adjusting margin}
+		\begin{beamercolorbox}[ht=\Provadis@FrameTitleHeight,wd=\Provadis@FrameTitleWidth,dp=0pt]{frametitle}
+			\vbox to\Provadis@FrameTitleHeight{\hbox{\usebeamerfont{frametitle}\insertframetitle\strut}\vfil}%
+		\end{beamercolorbox}%
+	\end{beamercolorbox}
+	\vspace{\Provadis@FrameTitleMarginBottom}%
+	\vspace{\Provadis@TextareaPaddingTop}% zusätzliches Padding für den Text
+	\vspace{-0.4cm}% unsystematischer negativer Abstand, weil irgendwie ein zusätzlicher Abstand eingefügt wird, den wir nicht wollen...
+}
+
+% Fußzeile
+\setbeamertemplate{footline}{%
+	\ifProvadis@ReserveSpaceForSignet%
+		\vspace{\Provadis@FootlineSignetReservedSpace}% Textarea nach unten durch Signet begrenzen
+	\fi%
+	\vspace{\Provadis@TextareaPaddingBottom}% zusätzliches Padding zur Textarea
+	\begin{beamercolorbox}[leftskip=\Provadis@FootlineMarginLeftRight,rightskip=\Provadis@FootlineMarginLeftRight]{footline in head/foot}%
+		\usebeamerfont{footline in head/foot}%
+		\begin{beamercolorbox}[ht=\Provadis@FootlineHeight,wd=\Provadis@FootlineDateWidth,leftskip=\Provadis@FootlinePaddingLeftRight,rightskip=\Provadis@FootlinePaddingLeftRight]{date in head/foot}%
+			\vbox to\Provadis@FootlineHeight{\vfil\hbox{\usebeamerfont{date in head/foot}\insertshortdate\strut}\vfil}%
+		\end{beamercolorbox}%
+		\hspace{\Provadis@FootlineDateAuthorTitleSeparator}%
+		\begin{beamercolorbox}[ht=\Provadis@FootlineHeight,wd=\Provadis@FootlineAuthorTitleWidth,leftskip=\Provadis@FootlinePaddingLeftRight,rightskip=\Provadis@FootlinePaddingLeftRight]{title in head/foot}%
+		 	\vbox to\Provadis@FootlineHeight{\vfil\hbox{{\usebeamerfont{author in head/foot}\insertshortauthor\strut} -- {\usebeamerfont{title in head/foot}\insertshorttitle\strut}}\vfil}%
+		\end{beamercolorbox}%
+		\hfill%
+		\begin{beamercolorbox}[ht=\Provadis@FootlineHeight,wd=\Provadis@FootlineFrameNumberWidth,right,leftskip=\Provadis@FootlinePaddingLeftRight,dp=0pt,right]{frame number in head/foot}%
+			% irgendwie funktioniert rightskip hier nicht, deshalb machen wir's manuell mit einem \hskip
+			\vbox to\Provadis@FootlineHeight{\vfil\hbox{\usebeamerfont{frame number in head/foot}\insertframenumber\strut\hskip\Provadis@FootlinePaddingLeftRight}\vfil}%
+		\end{beamercolorbox}%
+	\end{beamercolorbox}%
+}
+
+\setbeamertemplate{title page}{%
+	% das mag sich nicht via picture-Environment perfekt positionieren lassen... Warum auch immer.
+	% Nachteil von TikZ: Benötigt wegen remember picture,overlay zwei Kompilierungsläufe.
+	% Allerdings ermöglicht uns tikz ohnehin eine bessere Unterstützung beliebiger Titelbilder, als das mit picture möglich wäre.
+	\begin{tikzpicture}[remember picture,overlay]
+		% wir konstruieren einen Clip-Path, der das Bild auf die richtige Höhe zuschneidet.
+		% Die Breite setzen wir zusätzlich als Breite der tikz-Node, sodass einfach ein beliebiges Bild
+		% im Template {image on title page} eingebunden werden kann, das lediglich auf \linewidth gestreckt werden muss
+		% (Annahme: Es ist dann hoch genug, um die ganze Höhe auszufüllen)
+		\clip ([xshift=\Provadis@TitlePageMarginLeft,yshift=-\Provadis@TitlePageMarginTop]current page.north west) rectangle ([xshift=-\Provadis@TitlePageMarginRight,yshift=\Provadis@TitlePageMarginBottom]current page.south east)
+			node[midway,inner sep=0pt,text width=\dimexpr\paperwidth-\Provadis@TitlePageMarginLeft-\Provadis@TitlePageMarginRight,align=center] {%
+				\usebeamertemplate{image on title page}%
+			};
+		
+		\node[inner sep=0pt,anchor=south east,text width=\Provadis@TitlePageSignetWidth] at ([xshift=-\Provadis@TitlePageMarginRight-\Provadis@TitlePageSignetMarginRight@RelativeToBackgroundImage,yshift=\Provadis@TitlePageMarginBottom+\Provadis@TitlePageSignetMarginBottom@RelativeToBackgroundImage]current page.south east) {%
+			\usebeamertemplate{signet on title page}%
+		};
+	\end{tikzpicture}%
+	\vskip0pt plus 1filll%
+	% hier müssen wir mit einer äußeren beamercolorbox den Rand ausgleichen, weil das weniger eingerückt werden muss als normal...
+	\begin{beamercolorbox}[leftskip=\dimexpr-\Provadis@TextareaMarginLeft-\Provadis@TextareaPaddingLeft+\Provadis@TitlePageMarginLeft]{@dummy for adjusting margin}%
+		\begin{beamercolorbox}[ht=\Provadis@TitlePageAuthorHeight,wd=\Provadis@TitlePageAuthorTitleWidth,leftskip=\Provadis@TitlePageAuthorPaddingLeft,rightskip=\Provadis@TitlePageAuthorPaddingRight]{author on title page}%
+			\vbox to\Provadis@TitlePageAuthorHeight{\vfil\hbox{\usebeamerfont{author on title page}\usebeamercolor{author on title page}\insertauthor}\vfil}%
+		\end{beamercolorbox}%
+	\end{beamercolorbox}%
+	\nointerlineskip%
+	\begin{beamercolorbox}[leftskip=\dimexpr-\Provadis@TextareaMarginLeft-\Provadis@TextareaPaddingLeft+\Provadis@TitlePageMarginLeft]{dummy for adjusting margin}%
+		\begin{beamercolorbox}[ht=\Provadis@TitlePageTitleHeight,wd=\Provadis@TitlePageAuthorTitleWidth]{title on title page}%
+			\hspace*{\Provadis@TitlePageTitlePaddingLeft}\vbox to\Provadis@TitlePageTitleHeight{\vfil\parbox{\dimexpr\Provadis@TitlePageAuthorTitleWidth-\Provadis@TitlePageTitlePaddingLeft-\Provadis@TitlePageTitlePaddingRight}{%
+					\raggedright%
+					\usebeamerfont{title on title page}\usebeamercolor{title on title page}\inserttitle}\vfil}%
+		\end{beamercolorbox}%
+	\end{beamercolorbox}%
+	\vskip\Provadis@TitlePageMarginBottom%
+}
+
+% section page
+% TODO
+\setbeamertemplate{section page}
+{
+	\vfill
+	\begin{beamercolorbox}[leftskip=0.02\paperwidth]{section page}%
+		{\usebeamerfont{section title}\usebeamercolor[fg]{section title}\insertsection}
+	\end{beamercolorbox}
+	\vfill
+}
+
+% Farben definieren.
+\definecolor{background1}{RGB}{255,255,255}% Weiß, Hintergrund 1
+\definecolor{background1h80}{RGB}{242,242,242}% heller 80%
+\definecolor{background1h60}{RGB}{217,217,217}% heller 60%
+\definecolor{background1h40}{RGB}{191,191,191}% heller 40%
+\definecolor{background1d25}{RGB}{166,166,166}% dunkler 25%
+\definecolor{background1d50}{RGB}{127,127,127}% dunkler 50%
+
+\definecolor{text1}{RGB}{9,58,128}% Dukelblau, Text 1
+\definecolor{text1h80}{RGB}{185,212,250}% heller 80%
+\definecolor{text1h60}{RGB}{116,169,245}% heller 60%
+\definecolor{text1h40}{RGB}{46,126,240}% heller 40%
+\definecolor{text1d25}{RGB}{7,44,96}% dunkler 25%
+\definecolor{text1d50}{RGB}{4,29,64}% dunkler 50%
+
+\definecolor{background2}{RGB}{144,186,30}% Grün, Hintergrund 2
+\definecolor{background2h80}{RGB}{235,247,204}% heller 80%
+\definecolor{background2h60}{RGB}{216,239,154}% heller 60%
+\definecolor{background2h40}{RGB}{196,231,103}% heller 40%
+\definecolor{background2d25}{RGB}{108,139,22}% dunkler 25%
+\definecolor{background2d50}{RGB}{72,93,15}% dunkler 50%
+
+\definecolor{text2}{RGB}{0,0,0}% Schwarz, Text 2
+\definecolor{text2h80}{RGB}{127,127,127}% heller 80%
+\definecolor{text2h60}{RGB}{89,89,89}% heller 60%
+\definecolor{text2h40}{RGB}{64,64,64}% heller 40%
+\definecolor{text2d25}{RGB}{38,38,38}% dunkler 25%
+\definecolor{text2d50}{RGB}{13,13,13}% dunkler 50%
+
+\definecolor{accent1}{RGB}{34,57,99}% Dunkelblau, Akzent 1
+\definecolor{accent1h80}{RGB}{199,212,236}% heller 80%
+\definecolor{accent1h60}{RGB}{143,169,216}% heller 60%
+\definecolor{accent1h40}{RGB}{87,126,197}% heller 40%
+\definecolor{accent1d25}{RGB}{25,43,74}% dunkler 25%
+\definecolor{accent1d50}{RGB}{17,29,49}% dunkler 50%
+
+\definecolor{accent2}{RGB}{238,114,3}% Orange, Akzent 2
+\definecolor{accent2h80}{RGB}{254,227,202}% heller 80%
+\definecolor{accent2h60}{RGB}{254,198,149}% heller 60%
+\definecolor{accent2h40}{RGB}{253,170,96}% heller 40%
+\definecolor{accent2d25}{RGB}{179,86,2}% dunkler 25%
+\definecolor{accent2d50}{RGB}{179,57,1}% dunkler 50%
+
+\definecolor{accent3}{RGB}{60,181,161}% Blaugrün, Akzent 3
+\definecolor{accent3h80}{RGB}{215,242,237}% heller 80%
+\definecolor{accent3h60}{RGB}{174,228,219}% heller 60%
+\definecolor{accent3h40}{RGB}{134,215,201}% heller 40%
+\definecolor{accent3d25}{RGB}{45,136,121}% dunkler 25%
+\definecolor{accent3d50}{RGB}{30,91,81}% dunkler 50%
+
+\definecolor{accent4}{RGB}{0,172,233}% Türkis, Akzent 4
+\definecolor{accent4h80}{RGB}{200,240,255}% heller 80%
+\definecolor{accent4h60}{RGB}{144,226,255}% heller 60%
+\definecolor{accent4h40}{RGB}{89,211,255}% heller 40%
+\definecolor{accent4d25}{RGB}{0,129,175}% dunkler 25%
+\definecolor{accent4d50}{RGB}{0,86,116}% dunkler 50%
+
+\definecolor{accent5}{RGB}{176,205,237}% Hellblau, Akzent 5
+\definecolor{accent5h80}{RGB}{142,184,229}% heller 80%
+\definecolor{accent5h60}{RGB}{92,152,218}% heller 60%
+\definecolor{accent5h40}{RGB}{38,100,168}% heller 40%
+\definecolor{accent5d25}{RGB}{19,50,84}% dunkler 25%
+\definecolor{accent5d50}{RGB}{8,20,34}% dunkler 50%
+
+\definecolor{accent6}{RGB}{167,53,139}% Rosa, Akzent 6
+\definecolor{accent6h80}{RGB}{241,211,234}% heller 80%
+\definecolor{accent6h60}{RGB}{227,167,212}% heller 60%
+\definecolor{accent6h40}{RGB}{213,123,191}% heller 40%
+\definecolor{accent6d25}{RGB}{125,40,104}% dunkler 25%
+\definecolor{accent6d50}{RGB}{83,26,69}% dunkler 50%
+
+\definecolor{hlink}{RGB}{9,58,128}% Link
+\definecolor{folHlink}{RGB}{167,53,139}% Besuchter Link
+
+% der Vollständigkeit halber noch die "Standardfarben" von PowerPoint
+\definecolor{dunkelrot}{RGB}{192,0,0}
+\definecolor{rot}{RGB}{255,0,0}
+\definecolor{orange}{RGB}{255,192,0}
+\definecolor{gelb}{RGB}{255,255,0}
+\definecolor{hellgruen}{RGB}{146,208,80}
+\definecolor{gruen}{RGB}{0,176,80}
+\definecolor{hellblau}{RGB}{0,176,240}
+\definecolor{blau}{RGB}{0,112,192}
+\definecolor{dunkelblau}{RGB}{0,32,96}
+\definecolor{lila}{RGB}{112,48,160}
+
+% Dann können wir jetzt die Fonts und Farben in die Beamer-Variablen einsetzen...
+% itemize und enumerate: Farben, Fonts, Einrückungen
+\setbeamercolor{itemize/enumerate body}{fg=text1}
+\setbeamerfont{itemize/enumerate body}{
+	series=\mdseries,
+	size=\Provadis@XVIPoint% 16pt
+}
+\setbeamercolor{itemize/enumerate subbody}{fg=text2}
+\setbeamerfont{itemize/enumerate subbody}{
+	series=\mdseries,
+	size=\Provadis@XIVPoint% 14pt
+}
+\setbeamercolor{itemize/enumerate subsubbody}{fg=text2}
+\setbeamerfont{itemize/enumerate subsubbody}{
+	series=\mdseries,
+	size=\Provadis@XIIPoint% 12pt
+}
+
+\setbeamercolor{normal text}{fg=text1}
+\setbeamercolor{math text}{fg=text2}
+
+\setbeamercolor{author on title page}{
+	fg=background1,
+	bg=text1h40
+}
+\setbeamerfont{author on title page}{
+	size=\Provadis@XVIPoint
+}
+\setbeamercolor{title on title page}{
+	fg=background1,
+	bg=text1
+}
+\setbeamerfont{title on title page}{
+	size=\Provadis@XXIIPoint
+}
+
+% \alert gibt's in PowerPoint nicht direkt, wir machen's dunkelrot, auch wenn das nicht im Farbschema auftaucht.
+% Zusätzlich fett, damit man's schneller erkennt.
+\setbeamercolor{alerted text}{fg=dunkelrot}
+\setbeamerfont{alerted text}{series=\bfseries}
+
+% \structure machen wir fett, da normaler Text auf den Frames schon in derselben Farbe ist.
+% Erst geschachtelte Listen haben eine andere Farbe.
+\setbeamercolor{structure}{fg=text1}
+\setbeamerfont{structure}{series=\bfseries}
+
+% emph umdefinieren, sodass wir Text fett setzen
+\setbeamerfont{emph}{series=\bfseries\normalshape}
+\renewcommand<>{\emph}[1]{%
+	{\usebeamerfont{emph}\only#2#1}%
+}
+
+\setbeamertemplate{blocks}[default]
+
+\setbeamercolor{frametitle}{fg=text1}
+\setbeamerfont{frametitle}{
+	series=\bfseries,
+	size=\Provadis@XVIIIPoint% 18pt
+}
+\setbeamercolor{author in head/foot}{fg=text2}
+\setbeamercolor{title in head/foot}{fg=text2}
+\setbeamercolor{date in head/foot}{fg=text2}
+\setbeamercolor{frame number in head/foot}{fg=text2}
+\setbeamerfont{footline in head/foot}{
+	size=\Provadis@XIIPoint% 12pt
+}
+
+% URLs nicht in \ttfamily setzen
+\urlstyle{same}
+% TODO: Textfarbe für URLs setzen?
+
+
+% itemize anpassen.
+% Erstmal ein Template für die Aufzählungszeichen bauen.
+% Das basiert auf dem Standard-Template "circle", nutzt aber \textbullet statt $\bullet$.
+%  (siehe beamerbaseauxtemplates.sty für die Originaldefinition)
+\defbeamertemplate{itemize item}{provadiscircle}{%
+	\usebeamerfont*{itemize item}%
+	\textbullet%
+}
+\defbeamertemplate{itemize subitem}{provadiscircle}{%
+	\usebeamerfont*{itemize subitem}%
+	\textbullet%
+}
+\defbeamertemplate{itemize subsubitem}{provadiscircle}{%
+	\usebeamerfont*{itemize subsubitem}%
+	\textbullet%
+}
+\setbeamertemplate{itemize items}[provadiscircle]
+
+% Farben anpassen...
+\setbeamercolor{itemize item}{fg=text1}
+\setbeamercolor{itemize subitem}{fg=text2}
+\setbeamercolor{itemize subsubitem}{fg=text2}
+
+% Horizontales Spacing aus PowerPoint nachbauen
+\newlength{\Provadis@tmp}
+\settowidth{\Provadis@tmp}{\usebeamertemplate{itemize item}}
+\newlength{\Provadis@ItemizeILabelsep}\setlength{\Provadis@ItemizeILabelsep}{0.373196cm}% 0.79cm in PowerPoint
+\addtolength{\Provadis@ItemizeILabelsep}{-\Provadis@tmp}
+
+\settowidth{\Provadis@tmp}{\usebeamertemplate{itemize subitem}}
+\newlength{\Provadis@ItemizeIILabelsep}\setlength{\Provadis@ItemizeIILabelsep}{0.240924cm}% 0.51cm weniger eingerückt als der Text in PowerPoint
+\addtolength{\Provadis@ItemizeIILabelsep}{-\Provadis@tmp}
+
+\settowidth{\Provadis@tmp}{\usebeamertemplate{itemize subsubitem}}
+\newlength{\Provadis@ItemizeIIILabelsep}\setlength{\Provadis@ItemizeIIILabelsep}{0.231476cm}% 0.49cm weniger eingerückt als der Text in PowerPoint
+\addtolength{\Provadis@ItemizeIIILabelsep}{-\Provadis@tmp}
+
+% erster Patch: Einrückungen innerhalb von itemize anpassen
+\xpatchcmd{\itemize}{\beamer@computepref}{%
+	\setlength{\leftmargini}{0.373196cm}% 0.79cm in PowerPoint
+	\setlength{\leftmarginii}{0.099204cm}% 0.21cm (in PowerPoint) weiter eingerückt als erstes Level
+	\setlength{\leftmarginiii}{0.231476cm}% 0.49cm (in PowerPoint) weiter eingerückt als zweites Level
+	\beamer@computepref%
+}{}{\PackageWarning{ThinkingIndustryNew}{Failed to apply first patch to itemize}}
+
+% zweiter Patch: Label-Spacing anpassen
+\xpatchcmd{\itemize}{\def\makelabel}{%
+	\setlength\topsep{0pt}%
+	\setlength\itemsep{0pt}%
+	\ifnum\@itemdepth=1\relax%
+		\setlength\labelsep{\Provadis@ItemizeILabelsep}% Level 1
+	\else\ifnum\@itemdepth=2\relax%
+		\setlength\labelwidth{0pt}% Level 2
+		\setlength\labelsep{\Provadis@ItemizeIILabelsep}%
+	\else\ifnum\@itemdepth=3\relax%
+		\setlength\labelwidth{0pt}% Level 3
+		\setlength\labelsep{\Provadis@ItemizeIIILabelsep}%
+	\fi\fi\fi\def\makelabel%
+}{}{\PackageWarning{ThinkingIndustryNew}{Failed to apply second patch to itemize}}
+
+
+\setbeamertemplate{enumerate item}{\arabic{enumi}.}
+\setbeamertemplate{enumerate subitem}{\arabic{enumii}.}
+\setbeamertemplate{enumerate subsubitem}{\arabic{enumiii}.}
+
+\setbeamercolor{enumerate item}{fg=text1}
+\setbeamercolor{enumerate subitem}{fg=text2}
+\setbeamercolor{enumerate subsubitem}{fg=text2}
+\setbeamerfont{enumerate item}{series=\mdseries}
+\setbeamerfont{enumerate subitem}{series=\mdseries}
+\setbeamerfont{enumerate subsubitem}{series=\mdseries}
+
+\settowidth{\Provadis@tmp}{\usebeamertemplate{enumerate item}}
+\newlength{\Provadis@EnumerateILabelsep}\setlength{\Provadis@EnumerateILabelsep}{0.44878cm}% 0.95cm in PowerPoint
+\addtolength{\Provadis@EnumerateILabelsep}{-\Provadis@tmp}
+
+\settowidth{\Provadis@tmp}{\usebeamertemplate{enumerate subitem}}
+\newlength{\Provadis@EnumerateIILabelsep}\setlength{\Provadis@EnumerateIILabelsep}{0.453504cm}% 0.96cm in PowerPoint
+\addtolength{\Provadis@EnumerateIILabelsep}{-\Provadis@tmp}
+
+\settowidth{\Provadis@tmp}{\usebeamertemplate{enumerate subsubitem}}
+\newlength{\Provadis@EnumerateIIILabelsep}\setlength{\Provadis@EnumerateIIILabelsep}{0.302336cm}% 0.64cm in PowerPoint
+\addtolength{\Provadis@EnumerateIIILabelsep}{-\Provadis@tmp}
+
+\xpatchcmd{\enumerate}{\beamer@computepref}{%
+	\setlength{\leftmargini}{0.44878cm}% 0.95cm in PowerPoint
+	\setlength{\leftmarginii}{0.2362cm}% 0.5cm in PowerPoint weiter eingerückt
+	\setlength{\leftmarginiii}{0.085032cm}% 0.18cm in PowerPoint weiter eingerückt
+	\beamer@computepref%
+}{}{\PackageWarning{ThinkingIndustryNew}{Failed to apply first patch to enumerate}}
+
+\xpatchcmd{\beamer@enum@}{\def\makelabel}{%
+	\setlength\topsep{0pt}%
+	\setlength\itemsep{0pt}%
+	\setlength{\labelwidth}{0pt}%
+	\ifnum\@itemdepth=1\relax%
+		\setlength\labelsep{\Provadis@EnumerateILabelsep}% Level 1
+	\else\ifnum\@itemdepth=2\relax%
+		\setlength\labelsep{\Provadis@EnumerateIILabelsep}% Level 2
+	\else\ifnum\@itemdepth=3\relax%
+		\setlength\labelsep{\Provadis@EnumerateIIILabelsep}% Level 3
+	\fi\fi\fi\def\makelabel%
+}{}{\PackageWarning{ThinkingIndustryNew}{Failed to apply second patch to enumerate}}
+
+% Blöcke
+
+
+\mode<all>

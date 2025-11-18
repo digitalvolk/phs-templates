@@ -1,0 +1,168 @@
+% Known bugs:
+% - Bei weitem nicht perfekt.
+% - \sectionpage hat die volle Fußzeile mit allen Angaben.
+%   Für die \titlepage ist ein Hack implementiert: der allererste Frame kriegt keine volle Fußzeile.
+%   Das wird über die Frame-Nummer entschieden und ist ein echt übler Hack.
+\mode<presentation>
+
+\RequirePackage{eso-pic}
+
+% Inhalt standardmäßig nicht vertikal zentrieren
+\beamer@centeredfalse
+
+% Textabstand links/rechts
+\setbeamersize{text margin left=0.05\paperwidth,text margin right=0.05\paperwidth}
+
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{blocks}[rounded][shadow=true]  
+
+\setbeamertemplate{itemize items}[circle]
+
+% Farbdefinitionen
+% Standardfarbe für den meisten Text
+\definecolor{provadisblau}{RGB}{9,58,128}
+% dunkleres blau für Logo, Linien und Kasten unten rechts
+\definecolor{provadisblau2}{RGB}{31,73,125}
+
+\definecolor{alert}{named}{red}
+
+% Farbe für die Linien in Kopf/Fuß (fg) sowie den Deko-Kasten unten rechts festlegen
+\setbeamercolor{dekoration}{fg=provadisblau2,bg=provadisblau2}
+
+% ein paar Farben anpassen (ohne Gewähr auf Vollständigkeit)
+\setbeamercolor{alerted text}{fg=alert}
+\setbeamercolor{structure}{fg=provadisblau}
+\setbeamercolor{frametitle}{fg=provadisblau}
+\setbeamercolor{section title}{fg=provadisblau}
+
+\setbeamerfont{title}{series=\bfseries}
+\setbeamerfont{author}{series=\bfseries}
+\setbeamercolor{author}{fg=provadisblau}
+
+\setbeamerfont{frametitle}{series=\bfseries,size=\large}
+\setbeamerfont{section title}{series=\bfseries}
+
+\setbeamercolor{author in head/foot}{fg=black}
+\setbeamercolor{title in head/foot}{fg=black}
+\setbeamercolor{date in head/foot}{fg=black}
+\setbeamercolor{frame number in head/foot}{fg=black}
+
+\setbeamerfont{author in head/foot}{size=\scriptsize}
+
+% itemize und enumerate: Farben, Fonts, Einrückungen
+%\setbeamercolor{itemize/enumerate body}{fg=provadisblau}
+%\setbeamerfont{itemize/enumerate body}{series=\bfseries}
+
+\setbeamercolor{itemize/enumerate subbody}{fg=black}
+\setbeamerfont{itemize/enumerate subbody}{series=\mdseries}
+
+\setlength{\leftmargini}{10pt}
+\setlength{\leftmarginii}{10pt}
+\setlength{\leftmarginiii}{10pt}
+
+
+% keine headline...
+\setbeamertemplate{headline}{}
+% ... dafür aber den frametitle immer anzeigen
+\patchcmd{\endbeamer@frameslide}{\ifx\beamer@frametitle\@empty}{\iffalse}{}{\errmessage{failed to patch}}
+
+% Eigentlicher frametitle
+\setbeamertemplate{frametitle}{%
+  \@tempdima=\textwidth%
+  \advance\@tempdima by\beamer@rightmargin%
+  \advance\@tempdima by\beamer@leftmargin%
+  \begin{beamercolorbox}[wd=\the\@tempdima,leftskip=0.045\paperwidth,ht=0.125\paperheight,dp=1em]{frametitle}
+    \begin{minipage}{.66\paperwidth}
+    \usebeamerfont{frametitle}%
+    \vbox{}\vskip-2ex%
+    \strut\insertframetitle\par%
+    \end{minipage}%
+    \hfill\raisebox{-0.1cm}{}\hspace*{0.05\paperwidth}\null%
+  \end{beamercolorbox}%
+}
+
+% Fußzeile
+\setbeamertemplate{footline}{%
+   \begin{beamercolorbox}[ht=3.8ex,leftskip=0.05\paperwidth,dp=0ex]{footline in head/foot}%
+    \usebeamerfont{author in head/foot}%
+	\begin{beamercolorbox}[wd=.28\paperwidth,ht=2.25ex,dp=1ex]{date in head/foot}%
+		\ifnum\insertframenumber>1\relax%
+		\usebeamerfont{date in head/foot}\insertshortdate\hspace*{1em}%
+		\fi%
+	\end{beamercolorbox}%
+	%\hfill%
+	\begin{beamercolorbox}[wd=.57\paperwidth,ht=2.25ex,dp=1ex]{title in head/foot}%
+	 	\ifnum\insertframenumber>1\relax%
+	 	\usebeamerfont{title in head/foot}\insertshorttitle{} -- \insertshortauthor%
+	 	\fi%
+	\end{beamercolorbox}%
+	\begin{beamercolorbox}[wd=.05\paperwidth,ht=2.25ex,dp=1ex,right]{frame number in head/foot}%
+		\ifnum\insertframenumber>1\relax%
+		\usebeamerfont{frame number in head/foot}\insertframenumber{}~~%
+		\fi%
+	\end{beamercolorbox}%
+	%\hfill%
+	\llap{\raisebox{1.5em}{}}%
+   \end{beamercolorbox}%
+   \vspace*{0.1cm}%
+}
+
+% section page: nur Sektionsnamen (ohne Sektion 1 drüber), ohne Beamercolorbox.
+\setbeamertemplate{section page}
+{
+%	\AddToShipoutPictureFG*{%
+%		\AtPageUpperLeft{%
+%			%\vspace{0.175\paperheight}%
+%		%\hspace*{0.015\paperwidth}%
+%		\includegraphics[width=0.97\paperwidth]{background}}%
+%		%\vfill\null%
+%	}
+	\vfill
+	\begin{beamercolorbox}[leftskip=0.02\paperwidth]{section page}%
+		{\usebeamerfont{section title}\usebeamercolor[fg]{section title}\insertsection}
+	\end{beamercolorbox}
+	\vfill
+}
+
+\setbeamertemplate{title page}
+{
+	\vfill
+	\begin{beamercolorbox}[leftskip=0.02\paperwidth]{title page}%
+		{\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}
+		\ifx\insertsubtitle\@empty
+		\else
+			\vskip2ex
+			{\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle}
+		\fi
+		\ifx\insertauthor\@empty
+		\else
+			\vskip4ex
+			{\usebeamerfont{author}\usebeamercolor[fg]{author}\insertauthor}
+		\fi
+		\ifx\insertinstitute\@empty
+		\else
+			\vskip2ex
+			{\usebeamerfont{institute}\usebeamercolor[fg]{institute}\insertinstitute}
+		\fi
+		\ifx\insertdate\@empty
+		\else
+			\vskip2ex
+			\usebeamerfont{date}\insertdate%
+		\fi
+	\end{beamercolorbox}
+	\vfill
+}
+
+\mode<handout>{
+	\setbeamercolor{frametitle}{fg=black}
+	\setbeamercolor{section title}{fg=black}
+	\setbeamercolor{title}{fg=black}
+	\setbeamercolor{author}{fg=black}
+	\setbeamercolor{structure}{fg=black}
+	\setbeamerfont{structure}{series=\bfseries}
+	\setbeamercolor{itemize/enumerate body}{fg=black}
+	\setbeamercolor{dekoration}{fg=black,bg=} % Linien in schwarz, Deko-Kasten unten rechts unsichtbar
+	\definecolor{blockbackground}{named}{white}
+}
+
+\mode<all>

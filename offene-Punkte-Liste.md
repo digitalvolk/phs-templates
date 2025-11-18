@@ -1,0 +1,1 @@
+* in \*.potx hinterlegte Meta-Daten löschen
